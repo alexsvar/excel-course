@@ -1,6 +1,5 @@
 class Dom {
   constructor(selector) {
-    // #app
     this.$el = typeof selector === 'string'
       ? document.querySelector(selector)
       : selector
@@ -61,7 +60,7 @@ class Dom {
   }
 }
 
-// event.target
+
 export function $(selector) {
   return new Dom(selector)
 }
