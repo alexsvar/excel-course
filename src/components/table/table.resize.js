@@ -5,7 +5,7 @@ export function resizeHandler($root, event) {
   const $parent = $resizer.closest('[data-type="resizable"]')
   const coords = $parent.getCoords()
   const type = $resizer.data.resize
-  const sideProp = type === 'column' ? 'bottom' : 'right'
+  const sideProp = type === 'col' ? 'bottom' : 'right'
   let value
 
   $resizer.css({
@@ -14,7 +14,7 @@ export function resizeHandler($root, event) {
   })
 
   document.onmousemove = e => {
-    if (type === 'column') {
+    if (type === 'col') {
       const delta = e.pageX - coords.right
       value = coords.width + delta
       $resizer.css({right: -delta + 'px'})
@@ -29,10 +29,10 @@ export function resizeHandler($root, event) {
     document.onmousemove = null
     document.onmouseup = null
 
-    if (type === 'column') {
+    if (type === 'col') {
       $parent.css({width: value + 'px'})
       $root
-          .findAll(`[data-column="${$parent.data.column}"]`)
+          .findAll(`[data-col="${$parent.data.col}"]`)
           .forEach(el => el.style.width = value + 'px')
     } else {
       $parent.css({height: value + 'px'})
